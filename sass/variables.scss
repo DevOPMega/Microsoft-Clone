@@ -1,0 +1,50 @@
+// fonts 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap');
+
+// Variables 
+$alt : all 0.5s ease;   // transition
+
+// Variables for colors
+$body-bg : #fff;
+$text-color-nav : #262626;
+$btn-bg-color : #0067b8;
+$btn-text-color : #fff !important;
+
+// Variables for fonts property 
+$font : Roboto, Helvetica, sans-serif;
+$nav-font-size: 13px;
+
+// mixins 
+@mixin display-prop($display) {
+    display: $display;
+}
+@mixin button {
+    padding: 8px 12px;
+    color: #fff;
+    font-size: 17px;
+}
+@mixin link {
+    font-size: 14px;
+    font-weight: 500;
+    color: $btn-bg-color;
+    text-decoration: underline ;
+    text-underline-offset: 4px;
+}
+@mixin card-container {
+    @include display-prop(flex);
+    flex-wrap: wrap;
+    padding: 20px 0;
+    justify-content: center;
+
+}
+@mixin card {
+    flex: 0 0 25%;
+    padding: 20px 30px;
+    @include display-prop(flex);
+    flex-direction: column;
+    gap: 15px 0;
+    h2 {
+        font-weight: 500;
+        margin-bottom: -10px;
+    }
+}

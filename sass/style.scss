@@ -1,0 +1,353 @@
+@import "variables";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: $font;
+}
+
+body {
+    background-color: $body-bg;
+    overflow-x: hidden;
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #000;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    color: $text-color-nav;
+    text-decoration: none;
+    font-size: $nav-font-size;
+    transition: $alt;
+    cursor: pointer;
+}
+
+p {
+    line-height: 24px;
+    font-size: 15px;
+    color: $text-color-nav;
+}
+
+img {
+    width: 100%;
+}
+
+.card-heading {
+    font-weight: 500;
+    margin: 0 auto -31px 28px;
+}
+
+// Navigation bar 
+nav {
+    @include display-prop(flex);
+    justify-content: space-between;
+    height: 50px;
+    padding: 0 70px;
+    position: relative;
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+    span {
+        display: block;
+        width: 20px;
+        height: 2px;
+        margin-bottom: 4px;
+        background: $text-color-nav;
+    }
+}
+
+.nav-side:not(:last-child) {
+    align-self: center;
+}
+
+.nav-side {
+    @include display-prop(flex);
+    align-items: center;
+
+    div:not(:last-child) {
+        margin-right: 20px;
+    }
+
+    .logo {
+        width: 120px;
+    }
+
+    a:hover {
+        text-decoration: underline $text-color-nav;
+        text-decoration-thickness: 2px;
+        text-underline-offset: 6px;
+    }
+
+    .dropdown {
+        @include display-prop(flex);
+        height: 100%;
+        padding: 0 10px;
+        cursor: pointer;
+    }
+
+    .dropdown button {
+        border: none;
+        background: transparent;
+        cursor: pointer;
+    }
+}
+
+.nav-links ul {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+// Mobile based navbar 
+.mobile-navbar {
+    display: none;
+    position: absolute; 
+    width: 100%;
+    z-index: 2;
+    background-color: #f2f2f2 ;
+    ul {
+        padding: 0;
+        li {
+            padding: 15px 25px;
+            border: 1px solid #f2f2f2;
+            border-bottom: 1px solid #dfcdcd;
+        }
+        li:hover {
+            border: 1px dashed #000;
+        }
+        a {
+            font-size: 15px;
+        }
+    }
+}
+
+// Carousel 
+.carousel {
+    width: 100%;
+    height: auto;
+    position: relative;
+
+    .carousel-img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .carousel-info {
+        position: absolute;
+        top: 50%;
+        left: 15%;
+        transform: translate(-15%, -50%);
+        width: 40%;
+
+        h1 {
+            font-weight: 500;
+        }
+    }
+
+    .carousel-info>* {
+        margin-bottom: 20px;
+    }
+
+    .carousel-info-btn {
+        width: 80%;
+        @include display-prop(flex);
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .carousel-info-btn a:first-child {
+        @include button;
+        background-color: $btn-bg-color;
+    }
+
+    .carousel-info-btn a:last-child {
+        @include button;
+        color: #000;
+    }
+
+    .right-carousel-info {
+        left: 60% !important;
+    }
+}
+
+
+// Service section 
+.services {
+    width: 55%;
+    margin: 80px auto;
+    @include display-prop(flex);
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .service {
+        padding: 20px 5px;
+        margin: 0 20px;
+        text-align: center;
+
+        img {
+            @include display-prop(block);
+            width: 40px;
+            margin: 10px auto;
+        }
+
+        a {
+            @include link;
+        }
+    }
+
+}
+
+// Latest Information 
+.lt-info {
+    @include card-container;
+
+    .lt-info-card {
+        @include card;
+
+        a {
+            @include link;
+            text-decoration: none;
+            font-weight: 500;
+        }
+    }
+}
+
+// Follow Microsoft 
+.follow {
+    @include display-prop(flex);
+    align-items: center;
+    margin-top: 20px;
+    padding-left: 40px;
+
+    div {
+        padding: 10px 15px;
+
+        img {
+            width: 30px;
+        }
+    }
+}
+
+// Back to Top button 
+.back-to-top {
+    @include display-prop(flex);
+    padding: 40px;
+    justify-content: end;
+
+    a {
+        @include button;
+        color: #000;
+        box-shadow: 2px 2px 0px #000;
+        background: linear-gradient(rgba(0, 0, 0, .15), rgba(0, 0, 0, .15));
+    }
+
+    a:hover {
+        background: #fff;
+    }
+}
+
+
+@media all and (max-width: 850px) {
+    nav {
+        padding: 0 30px;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .nav-side:first-child .nav-links {
+        display: none;
+    }
+
+    .dropdown button {
+        display: none;
+    }
+
+    .carousel {
+        .carousel-img {
+            height: auto;
+        }
+
+        .carousel-info {
+            width: 80%;
+            margin: auto;
+            position: initial;
+            transform: translate(0, 0);
+            margin-top: 30px;
+
+            .carousel-info-btn {
+                width: 80%;
+            }
+        }
+
+    }
+
+}
+
+// Footer styling 
+.footer {
+    @include display-prop(flex);
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 40px;
+    background-color: #f2f2f2;
+    color: #616161;
+    .footer-list {
+        padding: 20px 20px 20px 0 ;
+        h3 {
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        ul li {
+            padding: 2px 0;
+        }
+        ul li a {
+            color: #616161;
+            font-size: 12px;
+        }
+    }
+    
+
+}
+
+@media all and (max-width: 1084px) {
+    .lt-info {
+        .lt-info-card {
+            flex: 0 0 50% !important;
+        }
+    }
+    .footer {
+        justify-content: flex-start;
+    }
+    .footer .footer-list{
+        flex: 0 0 33%;
+    }
+    .active {
+        display: block !important;
+    }
+    .scrollable {
+        overflow: hidden;
+    }
+}
+
+@media all and (max-width: 640px) {
+    .lt-info {
+        .lt-info-card {
+            flex: 0 0 100% !important;
+        }
+    }
+    .footer .footer-list{
+        flex: 0 0 100%;
+    }
+}
